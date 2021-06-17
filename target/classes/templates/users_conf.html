@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Warsztat samochodowy</title>
+  <link th:href="@{/styles/style.css}" rel="stylesheet" >
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+
+
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+    <ul class="nav nav-pills nav-fill navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/user-s}" data-target="#navbarToggleExternalContent"  style="background-color:black;color:white">Cofnij zmiany</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mb-5 mx-auto"style="margin-top:30px;">
+
+      <form th:action="@{/users/save}" th:object="${user}" enctype="multipart/form-data" method="post" style="max-width:600px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}" />
+        <div class="input-group mb-3 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Zmień imie i nazwisko</span>
+          </div>
+          <input type="text" class="form-control"placeholder="Imie" th:field="*{imie}" />
+          <input type="text" class="form-control"placeholder="Nazwisko" th:field="*{nazwisko}" />
+
+        </div>
+
+        <div class="input-group mb-3"style="margin-top:10px;">
+          <input type="text" class="form-control" placeholder="Zmień email" th:field="*{email}" />
+          <input type="password" class="form-control" placeholder="Zmień hasło" th:field="*{haslo}" />
+
+        </div>
+        <div class="input-group mb-3"style="margin-top:10px;">
+          <input type="text" class="form-control" placeholder="Zmień numer telefonu" th:field="*{telefon}" />
+
+
+        </div>
+
+        <div class="form-group row">
+          <label class="col-form-label col-4">Roles</label>
+          <div class="col-8">
+            <th:block th:each="role : ${listRoles}">
+              <input type="checkbox" th:field="*{roles}"
+                     th:value="${role.id}"
+                     th:text="${role.name}" class="m-2"/>
+            </th:block>
+          </div>
+        </div>
+
+        <div class="" style="margin-left:50%;margin-right:50%;">
+          <button class="btn btn-primary" type="submit">Modyfikuj</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom">
+  <div class="container" >
+    <p class="m-0 text-center text-white">Auto Serwis &copy;<i><a style="text-decoration:none;color:white;" href="mailto:#">warsztacik@mailto.com</a> </i> 2021</p>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Warsztat samochodowy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/business-frontpage.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{index}">Strona główna</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Strony</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}" >Zaloguj</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Login -->
+<!--<div class="modal fade" id="login-modal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">-->
+<!--    &lt;!&ndash;     backdrop: 'static' aria-hidden="true" style="display: none;">&ndash;&gt;-->
+
+<!--    <div class="loginmodal-container">-->
+<!--        <h1>Zaloguj się :D</h1><br>-->
+<!--        <form>-->
+<!--            <input type="text" name="user" placeholder="Login">-->
+<!--            <input type="password" name="pass" placeholder="Hasło">-->
+<!--            <input type="submit" name="login" class="login loginmodal-submit" value="Zaloguj">-->
+<!--        </form>-->
+
+<!--        <div class="login-help">-->
+<!--            <a href="zarejestruj.html">Zarejestruj</a> - <a href="#">Zapomniałeś hasła?</a>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+<!-- Header -->
+<header class="bg-primary py-5 mb-5" style="background-image: url('bc.jpg');  background-position: center;">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-4 text-white mt-5 mb-2">Co oferuje nasz warsztat ?</h1>
+                <p class="lead mb-5 text-white-50">Oferujemy kompleksowe rozwiązania z dziedziny serwisu oraz obsługi
+                    pojazdów</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 mb-5">
+
+
+            <h1>Zalogowałeś się :D</h1>
+
+
+
+
+
+
+        </div>
+        <div class="col-md-4 mb-5">
+            <h2>Napisz do nas</h2>
+            <hr>
+            <address>
+                <strong>Warsztat Serwisowy</strong>
+                <br>18-400 Łomża
+                <br>Aleja Legionów 58
+                <br>
+            </address>
+            <address>
+                <abbr title="Phone">P:</abbr>
+                (123) 456-7890
+                <br>
+                <abbr title="Email">E:</abbr>
+                <a href="mailto:#">warsztacik@mailto.com</a>
+            </address>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom">
+    <div class="container" >
+        <p class="m-0 text-center text-white">Auto Serwis &copy;<i><a style="text-decoration:none;color:white;" href="mailto:#">warsztacik@mailto.com</a> </i> 2021</p>
+    </div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

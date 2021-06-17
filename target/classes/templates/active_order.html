@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://http://www.thymeleaf.org"
+      xmlns:sec="https://http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Warsztat samochodowy</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+
+    <!--  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="#">
+
+    </head>
+
+<body>
+
+<!--
+ Small modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>-->
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+        <ul class="nav nav-pills nav-fill navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item mx-1">
+                <a class="nav-link active" th:href="@{/active_order}" data-target="#navbarToggleExternalContent"
+                   href="active_order.html">Aktywne zamówienie</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/token_order}" data-target="#navbarToggleExternalContent"
+                   href="token_panel.html">Wprowadź token/zamówienia</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/history}" data-target="#navbarToggleExternalContent"
+                   href="history.html">Historia zamówień </a>
+            </li>
+<!--            <li class="nav-item mx-1">-->
+<!--                <a class="nav-link btn-light" th:href="@{/users}" data-target="#navbarToggleExternalContent"-->
+<!--                   href="users.html">Użytkownicy </a>-->
+<!--            </li>-->
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/user-s}" data-target="#navbarToggleExternalContent"
+                   href="manage_user.html">Ustawienia kont/a </a>
+            </li>
+<!--            <li class="nav-item mx-1 ">-->
+<!--                <a class="nav-link btn-light" th:href="@{/add_order}"id="a6" href="add_order.html"> Dodaj zamówienie </a>-->
+<!--            </li>-->
+
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/index}" data-target="#navbarToggleExternalContent"
+                   href="index.html" style="background-color:black;color:white">Wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--navbar-->
+<!--<div class="alert alert-success" role="alert">-->
+<!--    <h4 class="alert-heading">Zalogowano pomyślnie gratulacje!</h4>-->
+
+<!--</div>-->
+
+<!--<script>-->
+<!--  $(".alert").delay(2000).slideUp(500, function() {-->
+<!--    $(this).alert('close');-->
+<!--});-->
+
+<!--</script>-->
+<!-- Page Content -->
+<div class="container w-100">
+
+    <div class="d-flex justify-content-center mb-5">
+        <div class="col-md-8 mb-5 mt-1">
+            <h1>Witaj użytkowniku [[${#request.userPrincipal.principal.Imie}]]</h1>
+            <span sec:authentication="principal.authorities">Roles</span>
+
+            <b></br>Imie:</b>[[${#request.userPrincipal.principal.Imie}]]
+            <b></br>Nazwisko: </b>[[${#request.userPrincipal.principal.Nazwisko}]]
+            <b></br>Numer telefonu:</b> [[${#request.userPrincipal.principal.Telefon}]]
+
+            </br></br>
+
+            <h1 class="d-flex justify-content-center">Zamówienia</h1>
+            <div class="table-responsive-sm  d-flex justify-content-center">
+
+                <table class="table scroll border-dark"
+                       style=" table-layout: auto; white-space: nowrap; word-wrap: break-word; ">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Samochód</th>
+                        <th scope="col">Przebieg</th>
+                        <th scope="col">Następna wymiana oleju</th>
+                        <th scope="col">Rok</th>
+                        <th scope="col">Silnik</th>
+                        <th scope="col">Części</th>
+                        <th scope="col">Stan naprawy</th>
+                        <th scope="col">Cena</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="order: ${listOrderUser}" style="overflow: auto;">
+                    <tr>
+                        <th th:text="${order.id}" scope="row">1</th>
+                        <td th:text="${order.samochod}"> Samochod</td>
+                        <td th:text="${order.przebieg}"> Przebieg</td>
+                        <td th:text="${order.nastepnaWymianaOleju}"> NastepnaWymianaOleju</td>
+                        <td th:text="${order.rokProdukcji}"> Rok</td>
+                        <td th:text="${order.silnik}"> Silnik</td>
+                        <td th:text="${order.JakieCzesciWymieniane}"> Części</td>
+                        <td th:text="${order.StanNaprawy}"> StanNaprawy</td>
+                        <td th:text="${order.CenaRobocizna}"> Cena</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom mt-4">
+    <div class="container">
+        <p class="m-0 text-center text-white">Auto Serwis &copy;<i><a style="text-decoration:none;color:white;" href="mailto:#">warsztacik@mailto.com</a> </i> 2021</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+</body>
+
+</html>

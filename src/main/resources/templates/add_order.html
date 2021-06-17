@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Warsztat samochodowy</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+        <ul class="nav nav-pills nav-fill navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/active_order}" data-target="#navbarToggleExternalContent"
+                   href="active_order.html">Aktywne zamówienie</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link active" th:href="@{/token_order}" data-target="#navbarToggleExternalContent"
+                   href="token_panel.html">Wprowadź token/zamówienia</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/history}" data-target="#navbarToggleExternalContent"
+                   href="history.html">Historia zamówień </a>
+            </li>
+<!--            <li class="nav-item mx-1">-->
+<!--                <a class="nav-link btn-light" th:href="@{/users}" data-target="#navbarToggleExternalContent" href="users.html">Użytkownicy </a>-->
+<!--            </li>-->
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/user-s}" data-target="#navbarToggleExternalContent"
+                   href="manage_user.html">Ustawienia kont/a </a>
+            </li>
+<!--            <li class="nav-item mx-1">-->
+<!--                <a class="nav-link active" th:href="@{/add_order}" href="add_order.html"> Dodaj zamówienie </a>-->
+<!--            </li>-->
+
+            <li class="nav-item mx-1">
+                <a class="nav-link " th:href="@{/index}" data-target="#navbarToggleExternalContent" href="index.html"
+                   style="background-color:black;color:white">Wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<div class="alert alert-success" role="alert">-->
+<!--    <h4 class="alert-heading">Dodano pomyslnie!</h4>-->
+
+<!--</div>-->
+
+<!--<script>-->
+<!--  $(".alert").delay(2000).slideUp(500, function() {-->
+<!--    $(this).alert('close');-->
+<!--});-->
+<!--</script>-->
+
+<!-- Page Content -->
+<div class="container">
+    <div class="d-flex flex-column">
+        <!--    <div class="row">-->
+        <div class="" style="margin-top:30px;">
+            <form th:action="@{/addOrder}" th:object="${order}" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Samochód</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" th:field="*{samochod}"/>
+                </div>
+                <div class="input-group mb-3 ">
+                    <input type="text" class="form-control" placeholder="Przebieg" th:field="*{przebieg}"/>
+                    <input type="text" class="form-control" placeholder="Przebieg przy wymianie oleju"
+                           th:field="*{przebiegPrzyWymianieOleju}"/>
+
+                </div>
+                <div class="input-group mb-3 ">
+                    <input type="text" class="form-control" placeholder="Rok produkcji" th:field="*{rokProdukcji}"/>
+                    <input type="text" class="form-control" placeholder="Silnik" th:field="*{silnik}"/>
+
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Jakie części były wymieniane</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea"
+                              th:field="*{JakieCzesciWymieniane}"></textarea>
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-defaulty">Stan naprawy</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" th:field="*{StanNaprawy}"
+                           aria-describedby="inputGroup-sizing-defaulty">
+                    <!--dropdown-->
+           <!--         <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Przyjęto zgłoszenie</a>
+                            <a class="dropdown-item" href="#">Oczekiwanie na przyjście części</a>
+                            <a class="dropdown-item" href="#">Kompletacja części</a>
+                            <a class="dropdown-item" href="#">Wymiana części</a>
+                            <a class="dropdown-item" href="#">Oczekiwanie zapłaty</a>
+                            <a class="dropdown-item" href="#">Zakończone</a>
+                        </div>
+                    </div>-->
+
+                </div>
+                <div class="input-group mb-3 ">
+                    <input type="text" class="form-control" placeholder="Cena części" th:field="*{CenaCzesci}">
+                    <input type="text" class="form-control" placeholder="Cena za wszystko" th:field="*{CenaRobocizna}">
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary ">Dodaj zamówienie</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom">
+    <div class="container">
+        <p class="m-0 text-center text-white">Auto Serwis &copy;<i><a style="text-decoration:none;color:white;" href="mailto:#">warsztacik@mailto.com</a> </i> 2021</p>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+
+</body>
+
+</html>

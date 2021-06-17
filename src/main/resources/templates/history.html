@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Warsztat samochodowy</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" >
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" th:href="@{index}">Strona główna</a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+<!--                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item">-->
+<!--                     <a class="nav-link" href="index.html">O nas</a>-->
+<!--       -->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/login}" href="index.html">Wyloguj</a>-->
+<!--                </li>-->
+<!--                -->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!-- 
+<header class="bg-primary py-5 mb-5" style="background-image: url('bc.jpg');  background-position: center;">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-4 text-white mt-5 mb-2">Co oferuje nasz warsztat ?</h1>
+                <p class="lead mb-5 text-white-50">Oferujemy kompleksowe rozwiązania z dziedziny serwisu oraz obsługi
+                    pojazdów</p>
+            </div>
+        </div>
+    </div>
+</header>
+-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+        <ul class="nav nav-pills nav-fill navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/active_order}"data-target="#navbarToggleExternalContent" href="active_order.html">Aktywne zamówienie</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/token_order}" data-target="#navbarToggleExternalContent" href="token_panel.html">Wprowadź token/zamówienia</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link active" th:href="@{/history}" data-target="#navbarToggleExternalContent" href="history.html">Historia zamówień </a>
+            </li>
+<!--            <li class="nav-item mx-1">-->
+<!--                <a class="nav-link btn-light" th:href="@{/users}" data-target="#navbarToggleExternalContent" href="users.html">Użytkownicy </a>-->
+<!--            </li>-->
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/user-s}" data-target="#navbarToggleExternalContent" href="manage_user.html">Ustawienia kont/a </a>
+            </li>
+<!--            <li class="nav-item mx-1">-->
+<!--                <a class="nav-link btn-light" th:href="@{/add_order}"  href="add_order.html"> Dodaj zamówienie </a>-->
+<!--            </li>-->
+
+            <li class="nav-item mx-1">
+                <a class="nav-link btn-light" th:href="@{/index}" data-target="#navbarToggleExternalContent" href="index.html" style="background-color:black;color:white">Wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+   <div class="d-flex justify-content-center"style="margin-top:30px;">
+    <div class="col-md-8 mb-5 mx-auto ">
+            <h1 class="text-center">Historia zamówień</h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Token ID</th>
+                <th scope="col">Data</th>
+                <th scope="col">Samochód</th>
+                <th scope="col">Stan zamówienia</th>
+                </tr>
+            </thead>
+            <tbody th:each="order: ${listOrder}">
+                <tr>
+                    <th scope="row" th:text="${order.id}" >X</th>
+                    <td th:text="${order.token}" >1dds</td>
+                    <td th:text="${order.rokProdukcji}">20-03-2020</td>
+                    <td th:text="${order.samochod}" >Opel</td>
+                    <td th:text="${order.StanNaprawy}" >Zakończone</td>
+                </tr>
+            </tbody>
+            </table>
+    </div>
+
+      
+       
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom">
+    <div class="container" >
+        <p class="m-0 text-center text-white">Auto Serwis &copy;<i><a style="text-decoration:none;color:white;" href="mailto:#">warsztacik@mailto.com</a> </i> 2021</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</body>
+
+</html>
